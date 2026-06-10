@@ -2,6 +2,10 @@
 
 TaskFlow is a premium, fully-typed React Native Task Management Application built using Expo and TypeScript. It offers an offline-first task tracker experience featuring local authentication, task CRUD, search/filtering/sorting, and a detailed statistics dashboard—designed to run cleanly inside Expo Go.
 
+### 🎥 Demo & Download
+- **[Watch Demo Video](https://drive.google.com/file/d/12qItUjyxcU-hcL0lqGEWPkZUZztvZCcW/view?usp=drivesdk)**
+- **[Download APK](https://expo.dev/artifacts/eas/pCgm2q9TMA7rUtV94PxWuX.apk)**
+
 ## 📱 Features
 
 - **Authentication Screen**: Secure local login validation (email structure checks, password length minimum 6 characters) with persistent session state.
