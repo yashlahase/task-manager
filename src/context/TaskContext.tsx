@@ -23,36 +23,6 @@ interface TaskContextType {
 
 export const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
-const SAMPLE_TASKS: Task[] = [
-  {
-    id: 'sample-1',
-    title: 'Welcome to TaskFlow! 🚀',
-    description: 'This is a sample task. You can complete tasks by checking the bubble, or edit/delete them by tapping the options on the card.',
-    priority: 'High',
-    dueDate: new Date(Date.now() + 86400000).toISOString().split('T')[0], // Tomorrow
-    status: 'Pending',
-    createdAt: new Date().toISOString()
-  },
-  {
-    id: 'sample-2',
-    title: 'Explore the Statistics Tab 📊',
-    description: 'Go to the Statistics screen from the bottom navigation bar to view your completion progress and priority breakdown.',
-    priority: 'Medium',
-    dueDate: new Date(Date.now() + 172800000).toISOString().split('T')[0], // Day after tomorrow
-    status: 'Pending',
-    createdAt: new Date().toISOString()
-  },
-  {
-    id: 'sample-3',
-    title: 'Create Your First Custom Task ✍️',
-    description: 'Tap the "+" button at the top right of the dashboard screen to design your own tasks, pick priorities and due dates.',
-    priority: 'Low',
-    dueDate: new Date(Date.now() + 259200000).toISOString().split('T')[0], // 3 days from now
-    status: 'Completed',
-    createdAt: new Date().toISOString()
-  }
-];
-
 interface TaskProviderProps {
   children: ReactNode;
 }
@@ -78,9 +48,9 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     try {
       const storedTasks = await taskStorage.getTasks(userEmail);
       if (storedTasks === null) {
-        // First launch for this user: populate default sample tasks
-        await taskStorage.saveTasks(userEmail, SAMPLE_TASKS);
-        setTasks(SAMPLE_TASKS);
+        // First launch for this user: populate empty task list
+        await taskStorage.saveTasks(userEmail, []);
+        setTasks([]);
       } else {
         setTasks(storedTasks);
       }
