@@ -68,16 +68,17 @@ export const AddEditTaskScreen: React.FC<Props> = ({ navigation, route }) => {
 
   // Form Validations
   const validateTitle = (text: string) => {
-    if (!text.trim()) {
+    const trimmed = text.trim();
+    if (!trimmed) {
       return 'Task title is required';
+    }
+    if (trimmed.length < 2) {
+      return 'Task title must be at least 2 characters';
     }
     return '';
   };
 
   const validateDescription = (text: string) => {
-    if (!text.trim()) {
-      return 'Task description is required';
-    }
     return '';
   };
 
@@ -194,7 +195,7 @@ export const AddEditTaskScreen: React.FC<Props> = ({ navigation, route }) => {
           />
 
           <AppInput
-            label="Description"
+            label="Description (Optional)"
             placeholder="Enter detailed description"
             value={description}
             onChangeText={handleDescriptionChange}

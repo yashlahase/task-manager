@@ -86,7 +86,7 @@ export const DashboardScreen: React.FC<Props> = ({ navigation }) => {
 
   const handleEmptyActionPress = () => {
     // Reset filters first to see if tasks show up, else open create screen
-    if (searchQuery || statusFilter !== 'All' || priorityFilter !== 'All') {
+    if ((searchQuery.trim().length >= 2) || statusFilter !== 'All' || priorityFilter !== 'All') {
       setSearchQuery('');
       setStatusFilter('All');
       setPriorityFilter('All');
@@ -96,7 +96,7 @@ export const DashboardScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   const getEmptyStateDetails = () => {
-    if (searchQuery || statusFilter !== 'All' || priorityFilter !== 'All') {
+    if ((searchQuery.trim().length >= 2) || statusFilter !== 'All' || priorityFilter !== 'All') {
       return {
         title: 'No Matching Tasks 🔍',
         description: 'Try adjusting your search query or filter chips to find what you are looking for.',
@@ -121,7 +121,7 @@ export const DashboardScreen: React.FC<Props> = ({ navigation }) => {
       {/* Header bar */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Text style={styles.welcomeText}>Hello, {displayUserEmail} 👋</Text>
+          <Text style={styles.welcomeText}>TaskFlow</Text>
           <Text style={styles.subtitleText}>Here is your progress overview</Text>
         </View>
         <TouchableOpacity

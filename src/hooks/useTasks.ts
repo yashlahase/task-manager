@@ -30,7 +30,7 @@ export const useTasks = () => {
     let result = [...tasks];
 
     // 1. Search filter: search by title
-    if (searchQuery.trim() !== '') {
+    if (searchQuery.trim().length >= 2) {
       const query = searchQuery.toLowerCase().trim();
       result = result.filter(task => task.title.toLowerCase().includes(query));
     }
